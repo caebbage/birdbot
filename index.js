@@ -14,6 +14,7 @@ client.on('message', msg => {
   }
   if (msg.channel == msg.guild.channels.find('name', 'check-in') && msg.content == '~done') {
     msg.member.addRole(msg.guild.roles.find('name','friends'));
+    msg.delete();
   }
   if (msg.content.startsWith('~color')) {
     let content = msg.content.split(' ')[1],
