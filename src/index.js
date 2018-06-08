@@ -10,7 +10,7 @@ client.on('message', msg => {
     msg.reply('pong!')
   }
   if (msg.channel === msg.guild.channels.find('name', 'check-in') && msg.content == '~done') {
-    msg.author.setRoles([msg.guild.roles.find('name','birds').id])
+    msg.author.setRoles([msg.guild.roles.find('name','friends').id])
   }
   if (msg.content.startsWith('~color')) {
     let content = msg.content.split(' ')[1];
@@ -21,7 +21,7 @@ client.on('message', msg => {
       msg.author.addRole(msg.guild.roles.find('name', id))
     }
     msg.guild.roles.find('name', id).setColor(content).catch(
-      msg.reply("Invalid color.")
+      msg.reply("Invalid color:" + content)
     );
   }
   if (mg.content.startsWith('~help')) {
@@ -29,4 +29,4 @@ client.on('message', msg => {
   }
 });
 
-client.login('token')
+client.login(process.env.token)
